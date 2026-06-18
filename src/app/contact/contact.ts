@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -11,9 +11,18 @@ import Swal from 'sweetalert2';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact implements OnInit {
+export class Contact implements OnInit, AfterViewInit {
 
-  @ViewChild('contactForm') contactForm!: NgForm; 
+  @ViewChild('contactForm') contactForm!: NgForm;
+  @ViewChild('heroVideo', { static: false }) heroVideo!: ElementRef<HTMLVideoElement>;
+
+  ngAfterViewInit() {
+    if (this.heroVideo?.nativeElement) {
+      this.heroVideo.nativeElement.play().catch(err => {
+        console.log('Autoplay blocked', err);
+      });
+    }
+  }
 
   formData = {
     name: '',
@@ -59,7 +68,7 @@ export class Contact implements OnInit {
         (position) => {
           this.userLat = position.coords.latitude;
           this.userLng = position.coords.longitude;
-          
+
           // FIX 2: Correct URL format for Satellite Map (t=k)
           const rawUrl = `https://maps.google.com/maps?q=${this.userLat},${this.userLng}&t=k&z=15&ie=UTF8&iwloc=&output=embed`;
 
@@ -108,7 +117,7 @@ export class Contact implements OnInit {
 
   onSubmit() {
     if (this.isPuzzleSolved && this.formData.name && this.formData.email && this.formData.message) {
-      
+
       this.isSubmitting = true;
 
       setTimeout(() => {
@@ -128,8 +137,8 @@ export class Contact implements OnInit {
         this.generatePuzzle();
         this.formData = { name: '', email: '', message: '' };
         if (this.contactForm) this.contactForm.resetForm();
-        
-      }, 1500); 
+
+      }, 1500);
     }
   }
 }
