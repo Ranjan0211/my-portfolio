@@ -29,9 +29,9 @@ export class Contact implements OnInit {
   isSubmitting: boolean = false;
 
   socials = [
-    { icon: 'bi bi-linkedin', link: '#', color: '#0077b5', label: 'LinkedIn' },
-    { icon: 'bi bi-github', link: '#', color: '#6e5494', label: 'GitHub' },
-    { icon: 'bi bi-whatsapp', link: '#', color: '#25D366', label: 'WhatsApp' },
+    { icon: 'bi bi-linkedin', link: 'https://www.linkedin.com/in/ranjan-kumar-mahunta-6a2581371/', color: '#0077b5', label: 'LinkedIn' },
+    { icon: 'bi bi-github', link: 'https://github.com/Ranjan0211', color: '#6e5494', label: 'GitHub' },
+    { icon: 'bi bi-whatsapp', link: 'https://wa.me/8328810710?text=Hi%20Ranjan,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect.', color: '#25D366', label: 'WhatsApp' },
     { icon: 'bi bi-envelope-fill', link: 'mailto:ranjanmahunta0211@gmail.com', color: '#ea4335', label: 'Email' }
   ];
 
