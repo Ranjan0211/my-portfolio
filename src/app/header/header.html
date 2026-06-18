@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+
+    <a class="navbar-brand d-flex align-items-center gap-2" (click)="setActive('home')" style="cursor: pointer;">
+      <img src="image/Plogo2.jpg" alt="Logo" class="nav-logo">
+      <h3 class="text-white mb-0">RTech</h3>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'home'" 
+           (click)="setActive('home')"
+            href="#">Home</a></li>
+
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'about'" 
+           (click)="setActive('about')"
+            href="#about">About</a></li>
+
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'skills'"
+            (click)="setActive('skills')" 
+            href="#skills">Skills</a></li>
+
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'experience'"
+            (click)="setActive('experience')" 
+            href="#experience">Experience</a></li>
+
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'projects'"
+            (click)="setActive('projects')" 
+            href="#projects">Projects</a></li>
+
+        <li class="nav-item"><a class="nav-link" [class.active]="activeSection === 'contact'"
+            (click)="setActive('contact')" 
+            href="#contact">Contact</a></li>
+
+        <li class="nav-item d-lg-none mt-4 w-100">
+          <a href="assets/Resume.pdf" download class="btn-fantasy-mobile">
+            <i class="bi bi-cloud-arrow-down-fill me-2"></i> Download Resume
+          </a>
+        </li>
+      </ul>
+
+      <div class="d-none d-lg-block">
+        <a href="assets/Resume.pdf" download class="btn-fantasy">
+          <span class="icon-box"><i class="bi bi-file-earmark-person-fill"></i></span>
+          <span class="text">Download Resume</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>

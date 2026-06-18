@@ -1,0 +1,746 @@
+/* =========================================
+   1. GLOBAL SECTION STYLES
+   ========================================= */
+footer {
+  padding: 80px 0 20px 0;
+  background: linear-gradient(to top, #020617, #0f172a);
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+.heading-line {
+  width: 60px;
+  height: 3px;
+  background: #6366f1;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.tech-circuit {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.glow-spot {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent 70%);
+  filter: blur(80px);
+}
+
+/* =========================================
+   2. PROFILE CARD (LEFT)
+   ========================================= */
+.profile-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-portrait {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
+  transition: transform 0.5s ease;
+  z-index: 0;
+  display: block;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0f172a 0%, transparent 40%);
+  z-index: 1;
+}
+
+.profile-card:hover .hero-portrait {
+  transform: scale(1.05);
+}
+
+.status-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  color: #fff;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.pulse {
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+.social-dock-container {
+  background: #0f172a;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.dock-text {
+  color: #fff;
+  font-weight: 800;
+  /* Thick font */
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* "GET IN TOUCH" Glass Badge */
+.get-touch-badge {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 8px 18px;
+  /* Slightly compact */
+
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  user-select: none;
+  white-space: nowrap;
+  /* Ensures text doesn't wrap */
+}
+
+.arrow-anim {
+  color: #22d3ee;
+  font-size: 1rem;
+  animation: slideArrow 1s ease-in-out infinite alternate;
+}
+
+.social-grid {
+  display: flex;
+  gap: 8px;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  background: var(--brand-color);
+  color: #fff;
+  box-shadow: 0 0 15px var(--brand-color);
+}
+
+/* =========================================
+   3. GLASS FORM & FLOATING INPUTS (RIGHT)
+   ========================================= */
+.glass-form-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.card-glow-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.5), transparent);
+}
+
+/* Floating Inputs */
+.floating-group {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.floating-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 15px 0;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.floating-label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  color: #64748b;
+  pointer-events: none;
+  transition: 0.3s ease all;
+  font-size: 1rem;
+}
+
+/* Active State */
+.floating-input:focus~.floating-label,
+.floating-input:not(:placeholder-shown)~.floating-label {
+  top: -10px;
+  font-size: 0.8rem;
+  color: #22d3ee;
+}
+
+.floating-input:focus {
+  border-bottom-color: #22d3ee;
+}
+
+.input-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #22d3ee;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px #22d3ee;
+}
+
+.floating-input:focus~.input-border {
+  width: 100%;
+}
+
+/* --- ADD THIS NEW VALIDATION CSS --- */
+
+/* 1. Validation Error Text Style */
+.validation-error {
+  color: #ef4444;
+  /* Red color */
+  font-size: 0.75rem;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* input Validation */
+
+.floating-input.ng-invalid.ng-touched~.input-border {
+  width: 100%;
+  /* Force line to show */
+  background: #ef4444;
+  /* Change from Blue to Red */
+  box-shadow: 0 0 10px #ef4444;
+  /* Red Glow */
+}
+
+.floating-input.ng-invalid.ng-touched~.floating-label {
+  color: #ef4444;
+  /* Label turns red */
+}
+
+/* Optional: Fade the puzzle if disabled */
+.opacity-50 {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* =========================================
+   4. NEW: PUZZLE & BUTTON
+   ========================================= */
+.puzzle-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 30px;
+  min-height: 120px;
+  /* Prevents layout jump */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Puzzle Box */
+.security-box {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #f59e0b;
+  /* Warning color */
+  padding: 15px 25px;
+  border-radius: 8px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.puzzle-label {
+  font-size: 0.75rem;
+  color: #f59e0b;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.puzzle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.puzzle-num {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.puzzle-input {
+  width: 60px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #22d3ee;
+  padding: 5px;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1.2rem;
+}
+
+.puzzle-input:focus {
+  border-color: #22d3ee;
+  box-shadow: 0 0 10px rgba(34, 211, 238, 0.2);
+}
+
+/* Submit Button & Success */
+.submit-wrapper {
+  width: 100%;
+  animation: slideUp 0.5s ease;
+}
+
+.access-granted {
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.cyber-btn {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  border: none;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+}
+
+.cyber-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+/* =========================================
+   5. MAP CARD (UNCHANGED)
+   ========================================= */
+.map-wide-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 400px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.map-header {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px 15px;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+}
+
+.map-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1.5px;
+}
+
+.map-coords,
+.map-data {
+  font-family: 'Courier New', monospace;
+  color: #22d3ee;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.map-data {
+  color: #64748b;
+}
+
+.blink-icon {
+  animation: blink-red 1.5s infinite;
+}
+
+.map-frame {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.cyber-map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: contrast(1.1) saturate(1.1) brightness(0.9);
+  mix-blend-mode: normal;
+}
+
+.cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.map-target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crosshair {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.crosshair::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  top: -5px;
+  left: 9px;
+  width: 2px;
+  height: 30px;
+}
+
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  left: -5px;
+  top: 9px;
+  height: 2px;
+  width: 30px;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  border-radius: 50%;
+  animation: radar-pulse 2s infinite ease-out;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: rgba(99, 102, 241, 0.6);
+  border-style: solid;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hud-corner.top-left {
+  top: 20px;
+  left: 20px;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-corner.bottom-right {
+  bottom: 20px;
+  right: 20px;
+  border-width: 0 2px 2px 0;
+}
+
+/* =========================================
+   6. FOOTER BOTTOM
+   ========================================= */
+
+.footer-bottom {
+  position: relative;
+  margin-top: 60px;
+  padding: 18px 0;
+
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* MULTI-COLOR FLOWING GRADIENT BAR */
+.footer-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 400%;
+  height: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #6366f1,
+    #22d3ee,
+    #22c55e,
+    #eab308,
+    #f43f5e,
+    #6366f1
+  );
+
+  background-size: 50% 100%;
+  animation: flowGradient 3.6s linear infinite;
+}
+
+/* SOFT GLOW UNDER BAR */
+.footer-bottom::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200%;
+  width: 400%;
+  height: 6px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(99,102,241,0.4),
+    rgba(34,211,238,0.4),
+    rgba(34,197,94,0.4),
+    rgba(234,179,8,0.4),
+    rgba(244,63,94,0.4)
+  );
+
+  animation: flowGradient 7s linear infinite;
+  filter: blur(10px);
+  opacity: 0.6;
+}
+
+/* =========================================
+   TEXT STYLING
+   ========================================= */
+.footer-bottom p {
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+}
+
+/*NAME GRADIENT */
+.footer-brand {
+  background: linear-gradient(90deg, #6366f1, #22d3ee, #22c55e);
+  -webkit-background-clip: text;
+   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Divider */
+.divider {
+  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* 💎 Designed text */
+.code-font {
+  font-family: 'Courier New', monospace;
+  color: #cbd5f5;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   TECH & STATUS
+   ========================================= */
+.tech-status-container {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Tech */
+.tech-pill {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #c7d2fe;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+}
+
+/* 🟢 STATUS (FIXED SIZE + CLEAN) */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.7rem;   /* 🔥 FIXED (smaller now) */
+  font-weight: 600;
+
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 20px;
+
+  padding: 4px 10px;
+}
+
+/* 🟢 BLINK DOT BEFORE TEXT */
+.status-pill .blink-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+  animation: blinkDot 1.5s infinite;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+@keyframes flowGradient {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+
+}
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+@media (max-width: 768px) {
+  .footer-bottom {
+    text-align: center;
+  }
+
+  .tech-status-container {
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+}

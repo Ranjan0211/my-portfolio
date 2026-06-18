@@ -1,0 +1,384 @@
+/* =========================================
+   1. SECTION BASE 
+   ========================================= */
+section {
+  padding: 100px 0;
+  background: linear-gradient(120deg, #05192E, #072D4F);
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-circuit,
+.glow-spot {
+  /* Kept your original background effects */
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tech-circuit {
+  inset: 0;
+  background-image: radial-gradient(#6366f1 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.05;
+}
+
+.glow-spot {
+  width: 400px;
+  height: 400px;
+  background: var(--primary-gradient);
+  filter: blur(120px);
+  opacity: 0.15;
+}
+
+.top-left {
+  top: -100px;
+  left: -100px;
+}
+
+.bottom-right {
+  bottom: -100px;
+  right: -100px;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  color: white;
+  margin-bottom: 0;
+}
+
+.heading-line {
+  width: 60px;
+  height: 4px;
+  background: #6366f1;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* =========================================
+   2. HUD PROFILE (Left Column)
+   ========================================= */
+.profile-hud-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile Image with Hexagon Clip */
+.profile-hex {
+  width: 240px;
+  height: 240px;
+  background: #0f172a;
+  border-radius: 50%;
+  /* Fallback */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rotating Rings */
+.hud-ring-outer {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  animation: spin 20s linear infinite;
+  z-index: 1;
+}
+
+.hud-ring-inner {
+  position: absolute;
+  inset: 20px;
+  border: 2px solid transparent;
+  border-top-color: #22d3ee;
+  border-bottom-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 10s linear infinite reverse;
+  z-index: 1;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Status Tag */
+.hud-tag {
+  position: absolute;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #22d3ee;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #22c55e;
+  animation: pulse 2s infinite;
+}
+
+/* =========================================
+   3. SOCIAL DOCK
+   ========================================= */
+.social-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.dock-item {
+  color: #cbd5e1;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.dock-item:hover {
+  color: #6366f1;
+  transform: translateY(-3px);
+}
+
+.dock-line {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   4. CYBER PANEL (Right Column)
+   ========================================= */
+.cyber-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  position: relative;
+  border-radius: 4px;
+  /* Sharp corners for cyber look */
+}
+
+/* Corner Brackets */
+.corner-bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6366f1;
+  transition: 0.3s;
+}
+
+.top-left {
+  top: -1px;
+  left: -1px;
+  border-bottom: none;
+  border-right: none;
+}
+
+.bottom-right {
+  bottom: -1px;
+  right: -1px;
+  border-top: none;
+  border-left: none;
+}
+
+.cyber-panel:hover .corner-bracket {
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 15px #6366f1;
+}
+
+/* Tabs */
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1rem;
+  font-weight: 600;
+  padding-bottom: 5px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  color: #fff;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #6366f1;
+  box-shadow: 0 -5px 10px #6366f1;
+}
+
+/* Stats */
+.stat-item {
+  text-align: center;
+}
+
+.stat-val {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Timeline */
+.timeline-container {
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.time-marker {
+  position: absolute;
+  left: -26px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background: #6366f1;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #6366f1;
+}
+
+.year-badge {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.role-title {
+  color: white;
+  margin: 5px 0 0 0;
+  font-size: 1.1rem;
+}
+
+/* Animation Utility */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   5. INFINITE MARQUEE
+   ========================================= */
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  padding: 20px 0;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.marquee-icon {
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+}
+
+.marquee-icon:hover {
+  color: #6366f1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #6366f1);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .profile-hud-wrapper {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 30px;
+  }
+
+  .profile-hex {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cyber-panel {
+    padding: 25px;
+  }
+}

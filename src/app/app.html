@@ -1,0 +1,18 @@
+<app-header></app-header>
+<app-hero></app-hero>
+<app-about></app-about>
+<app-skills></app-skills>
+<app-experience></app-experience>
+<app-projects></app-projects>
+<app-certifications></app-certifications>
+<app-contact></app-contact>
+
+<button class="scroll-top-btn" (click)="scrollToTop()" aria-label="Back to top">
+    <span class="tooltip-text">Back to Top</span>
+    <svg viewBox="0 0 24 24" class="arrow-icon">
+        <path d="M12 4l-6 6h4v6h4v-6h4z" />
+    </svg>
+</button>
+
+
+<router-outlet />

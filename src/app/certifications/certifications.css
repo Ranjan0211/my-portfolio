@@ -1,0 +1,241 @@
+/* =========================================
+   1. SECTION BACKGROUND
+   ========================================= */
+section {
+    padding: 100px 0;
+    background: linear-gradient(120deg, #05192E, #072D4F);
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+}
+
+.tech-circuit {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.center-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+}
+
+/* =========================================
+   2. HEADING STYLES
+   ========================================= */
+.section-title {
+    color: #fff;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, #6366f1, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.heading-line {
+    width: 80px;
+    height: 4px;
+    background: #6366f1;
+    border-radius: 2px;
+    margin-top: 15px;
+    margin-left: 0 !important;
+    margin-right: auto;
+}
+
+/* FIXED: New Style for Subtitle to make it Visible */
+.section-subtitle {
+    color: #b0b8c4;
+    /* Light Blue-Grey (High Contrast) */
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+/* =========================================
+   3. CERTIFICATE CARD
+   ========================================= */
+.cert-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+
+.cert-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--cert-color);
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.cert-card:hover::before {
+    opacity: 1;
+    box-shadow: 0 0 15px var(--cert-color);
+}
+
+/* =========================================
+   4. CONTENT STYLING
+   ========================================= */
+.bg-watermark {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    font-family: 'Courier New', monospace;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cert-icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--cert-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.cert-card:hover .cert-icon-box {
+    background: var(--cert-color);
+    color: #fff;
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px var(--cert-color);
+}
+
+.issuer-text {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cert-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.cert-date {
+    font-size: 0.85rem;
+    color: #64748b;
+    font-family: monospace;
+}
+
+.verified-badge {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================================
+   5. FOOTER
+   ========================================= */
+.cert-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.pulse-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
+}
+
+.view-btn {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.view-btn:hover {
+    color: var(--cert-color);
+    transform: translateX(5px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .cert-name {
+        font-size: 1.25rem;
+    }
+
+    .bg-watermark {
+        display: none;
+    }
+}

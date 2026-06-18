@@ -1,0 +1,79 @@
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">
+      Career <span class="text-gradient">Journey</span>
+    </h2>
+
+    <div class="experience-timeline">
+
+      <div class="exp-item" *ngFor="let exp of experiences; let i = index">
+
+        <div class="exp-point" [class.pulsing-point]="i === 0"></div>
+
+        <div class="exp-card">
+          <span class="exp-connector"></span>
+
+          <div class="exp-header">
+            <span class="exp-year">{{ exp.period }}</span>
+            <h4>{{ exp.role }}</h4>
+            <h5>{{ exp.company }}</h5>
+          </div>
+
+          <p>{{ exp.description }}</p>
+
+          <div class="exp-tags">
+            <span *ngFor="let tag of exp.tags">{{ tag }}</span>
+          </div>
+
+          <button class="arrow-btn" title="Details" (click)="openModal(exp)">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal-overlay" *ngIf="selectedExp" (click)="closeModal()">
+
+    <div class="modal-card" (click)="$event.stopPropagation()">
+
+      <button class="close-btn modal-close" (click)="closeModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+
+      <div class="modal-header">
+        <h3>{{ selectedExp.role }}</h3>
+        <p class="company-name">
+          <i class="bi bi-building"></i> {{ selectedExp.company }}
+          <span class="divider">|</span>
+          <i class="bi bi-geo-alt"></i> {{ selectedExp.location }}
+        </p>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="section-block">
+          <h6><i class="bi bi-list-task text-info"></i> Roles & Responsibilities</h6>
+          <ul>
+            <li *ngFor="let res of selectedExp.responsibilities">{{ res }}</li>
+          </ul>
+        </div>
+
+        <div class="section-block">
+          <h6><i class="bi bi-trophy text-warning"></i> Key Achievements</h6>
+          <ul>
+            <li *ngFor="let ach of selectedExp.achievements">{{ ach }}</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <span class="tech-badge" *ngFor="let tag of selectedExp.tags">#{{ tag }}</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>

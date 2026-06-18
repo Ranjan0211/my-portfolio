@@ -1,0 +1,55 @@
+<section id="certifications" class="position-relative overflow-hidden">
+
+  <div class="tech-circuit"></div>
+  <div class="glow-spot center-glow"></div>
+
+  <div class="container position-relative z-2">
+
+    <div class="row mb-5">
+      <div class="col-12 ps-lg-4">
+        <h2 class="section-title display-4 fw-bold">
+          Global <span class="text-gradient">Certifications</span>
+        </h2>
+        <p class="section-subtitle mt-3">Verified credentials & technical milestones</p>
+
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-lg-6 col-md-10" *ngFor="let cert of certs">
+
+        <div class="cert-card" [style.--cert-color]="cert.color">
+          <div class="bg-watermark">{{ cert.id }}</div>
+
+          <div class="d-flex align-items-center gap-4 position-relative z-2">
+            <div class="cert-icon-box">
+              <i [class]="cert.icon"></i>
+            </div>
+
+            <div class="cert-content flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start">
+                <h5 class="issuer-text mb-1">{{ cert.issuer }}</h5>
+                <span class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</span>
+              </div>
+
+              <h3 class="cert-name">{{ cert.name }}</h3>
+              <p class="cert-date mb-0">{{ cert.date }} • ID: {{ cert.id }}</p>
+            </div>
+          </div>
+
+          <div class="cert-footer mt-4 d-flex justify-content-between align-items-center">
+            <div class="pulse-indicator">
+              <span class="dot"></span> Active Credential
+            </div>
+            <a [href]="cert.link" class="view-btn">
+              View Certificate <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

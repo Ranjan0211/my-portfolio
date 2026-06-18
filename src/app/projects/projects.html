@@ -1,0 +1,114 @@
+<section id="projects">
+    <div class="bg-decoration"></div>
+
+    <div class="container position-relative z-2">
+        <h2 class="section-title">Featured <span class="text-gradient">Work</span></h2>
+
+        <div class="filter-tabs mb-5">
+            <button class="filter-btn" [class.active]="activeCategory === 'All'"
+                (click)="setCategory('All')">All</button>
+            <button class="filter-btn" [class.active]="activeCategory === 'Web'" (click)="setCategory('Web')">Web
+                Dev</button>
+            <button class="filter-btn" [class.active]="activeCategory === 'Backend'"
+                (click)="setCategory('Backend')">Backend</button>
+            <button class="filter-btn" [class.active]="activeCategory === 'Mobile'"
+                (click)="setCategory('Mobile')">Mobile</button>
+        </div>
+
+        <div class="scroll-wrapper">
+            <button class="scroll-arrow left-arrow" (click)="scrollLeft()">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+
+            <div class="horizontal-scroll" #scrollContainer (mouseenter)="stopAutoScroll()"
+                (mouseleave)="startAutoScroll()">
+                <div class="project-item" *ngFor="let project of visibleProjects">
+                    <div class="project-card">
+
+                        <div class="featured-badge" *ngIf="project.featured">
+                            <i class="bi bi-star-fill"></i> Featured
+                        </div>
+
+                        <div class="card-img-holder">
+                            <img [src]="project.image" alt="{{ project.title }}" class="project-img"
+                                onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
+                            <div class="img-overlay">
+                                <button (click)="openModal(project)" class="overlay-btn border-0">View Project</button>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <h4 class="fw-bold text-white mb-2">{{ project.title }}</h4>
+                            <div class="tech-stack mb-3">
+                                <span class="tech-pill" *ngFor="let t of project.tech">{{ t }}</span>
+                            </div>
+                            <p class="project-desc">{{ project.description }}</p>
+
+                            <div class="card-footer-actions">
+                                <a [href]="project.links.github" target="_blank" class="icon-link" title="View Code"><i
+                                        class="bi bi-github"></i></a>
+                                <a [href]="project.links.demo" target="_blank" class="icon-link" title="Live Demo"><i
+                                        class="bi bi-box-arrow-up-right"></i></a>
+                                <span class="line-spacer"></span>
+                                <button class="btn btn-sm text-gradient fw-bold border-0" (click)="openModal(project)">
+                                    Details <i class="bi bi-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scroll-arrow right-arrow" (click)="scrollRight()">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" *ngIf="selectedProject" (click)="closeModal()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+
+            <button class="modal-close" (click)="closeModal()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+            <div class="modal-body-split">
+
+                <div class="modal-image-col">
+                    <img [src]="selectedProject.image" class="modal-img-full">
+                    <div class="modal-links-row">
+                        <a [href]="selectedProject.links.github" target="_blank" class="modal-btn outline">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                        <a [href]="selectedProject.links.demo" target="_blank" class="modal-btn filled">
+                            <i class="bi bi-box-arrow-up-right"></i> Live Demo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="modal-info-col">
+                    <h5 class="text-gradient fw-bold mb-2 text-uppercase">{{ selectedProject.category }} Project</h5>
+                    <h2 class="text-white fw-bold mb-3">{{ selectedProject.title }}</h2>
+
+                    <p class="text-muted mb-4" style="line-height: 1.7;">
+                        {{ selectedProject.longDescription }}
+                    </p>
+
+                    <h6 class="text-white fw-bold mb-3">Key Features:</h6>
+                    <ul class="feature-list mb-4">
+                        <li *ngFor="let feature of selectedProject.features">
+                            <i class="bi bi-check-circle-fill text-primary me-2"></i> {{ feature }}
+                        </li>
+                    </ul>
+
+                    <h6 class="text-white fw-bold mb-2">Technologies Used:</h6>
+                    <div class="tech-stack">
+                        <span class="tech-pill" *ngFor="let t of selectedProject.tech">{{ t }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

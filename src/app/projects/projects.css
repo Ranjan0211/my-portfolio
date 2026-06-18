@@ -1,0 +1,522 @@
+/* =========================================
+   1. SECTION & CONTAINER
+   ========================================= */
+#projects {
+  background-color: var(--bg-dark);
+  background: var(--bg-dark, #0f172a);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* FIX: Force container width to 1250px so 3 cards (380px * 3 + gaps) fit perfectly */
+#projects .container {
+  max-width: 1250px !important;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.bg-decoration {
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-title {
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   2. HORIZONTAL SCROLL AREA
+   ========================================= */
+.scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.horizontal-scroll {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 2px;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ITEM WIDTH: Fixed to 380px */
+.project-item {
+  min-width: 380px;
+  max-width: 380px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   3. ARROWS & TABS
+   ========================================= */
+.scroll-arrow {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #22d3ee;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scroll-arrow:hover {
+  background: #6366f1;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+}
+
+.left-arrow {
+  left: -60px;
+}
+
+.right-arrow {
+  right: -60px;
+}
+
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  color: #fff;
+  border-color: #6366f1;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+/* =========================================
+   4. CARD DESIGN
+   ========================================= */
+.project-card {
+  background: var(--bg-card, rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 5;
+  box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+}
+
+.card-img-holder {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.1);
+}
+
+.img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .img-overlay {
+  opacity: 1;
+}
+
+.overlay-btn {
+  padding: 10px 20px;
+  background: #6366f1;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .overlay-btn {
+  transform: translateY(0);
+}
+
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.tech-pill {
+  font-size: 0.75rem;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.project-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer-actions {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon-link {
+  color: #cbd5e1;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.icon-link:hover {
+  color: #22d3ee;
+  transform: scale(1.1);
+}
+
+.line-spacer {
+  flex-grow: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================================
+   5. NEW: MODAL STYLES
+   ========================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.9);
+  /* Dark backdrop */
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: #1e293b;
+  width: 100%;
+  max-width: 1000px;
+  /* Wide view */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.modal-close:hover {
+  background: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* SPLIT LAYOUT */
+.modal-body-split {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* LEFT: IMAGE */
+.modal-image-col {
+  width: 45%;
+  position: relative;
+  background: #0f172a;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* ACTION BUTTONS ON IMAGE */
+.modal-links-row {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-btn.filled {
+  background: #6366f1;
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.modal-btn.outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.modal-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* RIGHT: DETAILS */
+.modal-info-col {
+  width: 55%;
+  padding: 40px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+/* =========================================
+   FIX: MODAL TEXT COLOR
+   ========================================= */
+
+/* Targeted selector for the description text in the modal */
+.modal-info-col p {
+    color: #e2e8f0 !important; /* Light Gray / Off-White */
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+/* Optional: Make the "Key Features" and "Tech Stack" headers pop too */
+.modal-info-col h6 {
+    color: #ffffffb0 !important; /* Pure White */
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 992px) {
+
+  /* Stack vertically on tablet/mobile */
+  .modal-body-split {
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+
+  .modal-image-col {
+    width: 100%;
+    height: 250px;
+    flex-shrink: 0;
+  }
+
+  .modal-info-col {
+    width: 100%;
+    padding: 25px;
+    max-height: none;
+  }
+
+  .modal-links-row {
+    position: relative;
+    bottom: auto;
+    padding: 15px;
+    background: #0f172a;
+  }
+}
+
+@media (max-width: 1400px) {
+  .left-arrow {
+    left: 10px;
+  }
+
+  .right-arrow {
+    right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-arrow {
+    display: none;
+  }
+
+  .project-item {
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  #projects .container {
+    max-width: 100% !important;
+  }
+}

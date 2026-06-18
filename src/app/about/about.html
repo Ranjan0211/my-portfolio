@@ -1,0 +1,112 @@
+<section id="about" class="position-relative overflow-hidden">
+
+    <div class="tech-circuit"></div>
+    <div class="glow-spot top-left"></div>
+    <div class="glow-spot bottom-right"></div>
+
+    <div class="container position-relative z-2">
+
+        <div class="row mb-5">
+            <div class="col-12 text-center text-lg-start ps-lg-5">
+                <h2 class="section-title display-4 fw-bold">
+                    About <span class="text-gradient">Me</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-5 text-center position-relative">
+                <div class="profile-hud-wrapper">
+
+                    <div class="hud-ring-outer"></div>
+                    <div class="hud-ring-inner"></div>
+
+                    <div class="profile-hex">
+                        <img src="image/PROFILE-PHOTO.png" alt="Ranjan Kumar" class="profile-img">
+                    </div>
+
+                    <div class="hud-tag">
+                        <span class="pulse-dot"></span> Available
+                    </div>
+                </div>
+
+                <div class="social-dock mt-4">
+                    <a href="#" class="dock-item linkedin"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="dock-item github"><i class="bi bi-github"></i></a>
+                    <a href="#" class="dock-item twitter"><i class="bi bi-twitter-x"></i></a>
+                    <div class="dock-line"></div>
+                    <a href="mailto:contact@rtech.com" class="dock-item mail"><i class="bi bi-envelope-fill"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="cyber-panel">
+
+                    <div class="corner-bracket top-left"></div>
+                    <div class="corner-bracket bottom-right"></div>
+
+                    <div class="panel-header d-flex gap-4 mb-4 border-bottom border-white-10 pb-3">
+                        <button class="tab-btn" [class.active]="activeTab === 'bio'" (click)="setTab('bio')">
+                            <i class="bi bi-person-badge me-2"></i> My Story
+                        </button>
+                        <button class="tab-btn" [class.active]="activeTab === 'timeline'" (click)="setTab('timeline')">
+                            <i class="bi bi-bezier2 me-2"></i> Journey
+                        </button>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div *ngIf="activeTab === 'bio'" class="fade-in">
+                            <h3 class="text-white fw-bold mb-3">
+                                Architecting the <span class="text-gradient">Digital Future</span>
+                            </h3>
+                            <p class="text-secondary lead mb-4">
+                                I am a precision-focused Software Engineer with <span class="text-white fw-bold">2.5+
+                                    years</span> of experience.
+                                I don't just write code; I design scalability. My expertise lies in the <span
+                                    class="text-gradient">.NET ecosystem</span> and creating reactive <span
+                                    class="text-gradient">Angular</span> interfaces.
+                            </p>
+
+                            <div class="stats-row d-flex justify-content-between mt-5">
+                                <div class="stat-item" *ngFor="let stat of stats">
+                                    <h2 class="stat-val">{{ stat.value }}</h2>
+                                    <span class="stat-lbl">{{ stat.label }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab === 'timeline'" class="fade-in">
+                            <div class="timeline-container">
+                                <div class="timeline-item" *ngFor="let item of timeline">
+                                    <div class="time-marker"></div>
+                                    <div class="time-content">
+                                        <span class="year-badge">{{ item.year }}</span>
+                                        <h5 class="role-title">{{ item.role }}</h5>
+                                        <p class="company-name mb-0">at {{ item.company }}</p>
+                                        <small class="text-secondary">{{ item.desc }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <ng-container *ngFor="let i of [1,2]">
+                            <i *ngFor="let tech of techStack" [class]="tech + ' marquee-icon'"></i>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
