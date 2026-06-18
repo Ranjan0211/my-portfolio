@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -11,18 +11,9 @@ import Swal from 'sweetalert2';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact implements OnInit, AfterViewInit {
+export class Contact implements OnInit {
 
   @ViewChild('contactForm') contactForm!: NgForm;
-  @ViewChild('heroVideo', { static: false }) heroVideo!: ElementRef<HTMLVideoElement>;
-
-  ngAfterViewInit() {
-    if (this.heroVideo?.nativeElement) {
-      this.heroVideo.nativeElement.play().catch(err => {
-        console.log('Autoplay blocked', err);
-      });
-    }
-  }
 
   formData = {
     name: '',
@@ -40,7 +31,7 @@ export class Contact implements OnInit, AfterViewInit {
   socials = [
     { icon: 'bi bi-linkedin', link: 'https://www.linkedin.com/in/ranjan-kumar-mahunta-6a2581371/', color: '#0077b5', label: 'LinkedIn' },
     { icon: 'bi bi-github', link: 'https://github.com/Ranjan0211', color: '#6e5494', label: 'GitHub' },
-    { icon: 'bi bi-whatsapp', link: 'https://wa.me/8328810710?text=Hi%20Ranjan,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect.', color: '#25D366', label: 'WhatsApp' },
+    { icon: 'bi bi-whatsapp', link: 'https://wa.me/918328810710?text=Hi%20Ranjan,%20I%20visited%20your%20portfolio%20and%20would%20like%20to%20connect.', color: '#25D366', label: 'WhatsApp' },
     { icon: 'bi bi-envelope-fill', link: 'https://mail.google.com/mail/?view=cm&fs=1&to=ranjanmahunta0211@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Ranjan,%20I%20visited%20your%20portfolio.', color: '#ea4335', label: 'Email' }
   ];
 
