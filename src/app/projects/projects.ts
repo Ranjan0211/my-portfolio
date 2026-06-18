@@ -73,7 +73,7 @@ import { CommonModule } from '@angular/common';
       description: 'An intelligent customer support bot capable of answering complex queries.',
       longDescription: 'Integrated with OpenAI, this chatbot understands context and provides human-like responses for customer support scenarios, significantly reducing support ticket volume.',
       features: ['Natural Language Processing', 'Context Awareness', 'Conversation History', 'Fallback to Human Agent'],
-      image: '/image/chatbot.png',
+      image: '/image/chatboat.png',
       featured: true,
       links: { demo: '#', github: '#' }
     },
