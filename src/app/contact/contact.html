@@ -7,10 +7,10 @@
 
     <div class="row mb-5 text-center">
       <div class="col-12">
-        <h2 class="display-5 fw-bold  ">
+        <h2 class="display-5 fw-bold">
           Let's Talk <span class="text-gradient"> About You</span>
         </h2>
-        <p class=" mt-3">Send Me A <span class="text-gradient">Message</span></p>
+        <p class="mt-3">Send Me A <span class="text-gradient">Message</span></p>
       </div>
     </div>
 
@@ -20,16 +20,16 @@
         <div class="profile-card h-100">
 
           <div class="image-wrapper">
-            <!-- <img src="image/ABOUT-IMAGE.png" alt="Ranjan Kumar" class="hero-portrait"> -->
             <video
-  class="hero-portrait"
-  muted
-  autoplay
-  loop
-  playsinline
-  preload="metadata">
-  <source src="image/30637-382483896.mp4" type="video/mp4">
-</video>
+              #heroVideo
+              class="hero-portrait"
+              muted
+              autoplay
+              loop
+              playsinline
+              preload="auto">
+              <source src="image/30637-382483896.mp4" type="video/mp4">
+            </video>
             <div class="image-overlay"></div>
             <div class="status-tag">
               <span class="dot pulse"></span> Online
@@ -37,19 +37,17 @@
           </div>
 
           <div class="social-dock-container">
-
             <div class="get-touch-badge">
               GET IN TOUCH <i class="bi bi-arrow-right arrow-anim"></i>
             </div>
-
             <div class="social-grid">
               <a *ngFor="let s of socials" [href]="s.link" target="_blank" class="social-btn"
                 [style.--brand-color]="s.color">
                 <i [class]="s.icon"></i>
               </a>
             </div>
-
           </div>
+
         </div>
       </div>
 
@@ -63,11 +61,10 @@
             <div class="row g-4">
               <div class="col-md-6">
                 <div class="floating-group">
-                  <input type="text" class="floating-input" placeholder=" " name="name" [(ngModel)]="formData.name"
-                    required #name="ngModel">
+                  <input type="text" class="floating-input" placeholder=" " name="name"
+                    [(ngModel)]="formData.name" required #name="ngModel">
                   <label class="floating-label"><i class="bi bi-person me-1"></i> Name</label>
                   <div class="input-border"></div>
-
                   <div *ngIf="name.invalid && (name.dirty || name.touched)" class="validation-error">
                     <i class="bi bi-exclamation-circle-fill"></i> Name is required
                   </div>
@@ -76,11 +73,10 @@
 
               <div class="col-md-6">
                 <div class="floating-group">
-                  <input type="email" class="floating-input" placeholder=" " name="email" [(ngModel)]="formData.email"
-                    required email #email="ngModel">
+                  <input type="email" class="floating-input" placeholder=" " name="email"
+                    [(ngModel)]="formData.email" required email #email="ngModel">
                   <label class="floating-label"><i class="bi bi-at me-1"></i> Comms ID (Email)</label>
                   <div class="input-border"></div>
-
                   <div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation-error">
                     <i class="bi bi-exclamation-circle-fill"></i> Valid Email required
                   </div>
@@ -89,11 +85,10 @@
             </div>
 
             <div class="floating-group mt-4">
-              <textarea class="floating-input" rows="4" placeholder=" " name="message" [(ngModel)]="formData.message"
-                required #message="ngModel"></textarea>
+              <textarea class="floating-input" rows="4" placeholder=" " name="message"
+                [(ngModel)]="formData.message" required #message="ngModel"></textarea>
               <label class="floating-label"><i class="bi bi-chat-text-fill me-1"></i> Your Message Here</label>
               <div class="input-border"></div>
-
               <div *ngIf="message.invalid && (message.dirty || message.touched)" class="validation-error">
                 <i class="bi bi-exclamation-circle-fill"></i> Message is required
               </div>
@@ -105,7 +100,6 @@
                 <div class="puzzle-label">
                   <i class="bi bi-shield-lock-fill text-warning me-2"></i> SECURITY CHECK
                 </div>
-
                 <div class="puzzle-row" [class.opacity-50]="contactForm.invalid">
                   <span class="puzzle-num">{{ num1 }}</span>
                   <span class="puzzle-op">+</span>
@@ -120,23 +114,19 @@
               </div>
 
               <div class="submit-wrapper" *ngIf="isPuzzleSolved && contactForm.valid">
-
                 <div class="access-granted mb-3">
                   <i class="bi bi-check-circle-fill text-success me-2"></i> VERYFIED SUCCESSFULLY
                 </div>
-
                 <button type="submit" class="cyber-btn w-100" [disabled]="isSubmitting">
-
                   <span *ngIf="!isSubmitting">
                     Send <i class="bi bi-send-fill ms-2"></i>
                   </span>
-
                   <span *ngIf="isSubmitting">
                     <span class="spinner-border spinner-border-sm me-2"></span> ENCRYPTING & SENDING...
                   </span>
-
                 </button>
               </div>
+
             </div>
           </form>
         </div>
@@ -151,8 +141,7 @@
         </span>
         <div class="d-flex gap-3">
           <span class="map-data d-none d-md-block">{{ locationName }}</span>
-          <span class="map-coords" *ngIf="userLat">{{ userLat | number:'1.4-4' }}° N, {{ userLng | number:'1.4-4' }}°
-            E</span>
+          <span class="map-coords" *ngIf="userLat">{{ userLat | number:'1.4-4' }}° N, {{ userLng | number:'1.4-4' }}° E</span>
           <span class="map-coords" *ngIf="!userLat">SEARCHING...</span>
         </div>
       </div>
@@ -174,8 +163,9 @@
         <div class="row align-items-center">
           <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
             <p class="mb-0 small text-secondary">
-              © 2026 <a href="#" class="footer-brand">Ranjan Kumar</a> <span class="divider">|</span> <span
-                class="code-font">Designed & Built</span>
+              © 2026 <a href="#" class="footer-brand">Ranjan Kumar</a>
+              <span class="divider">|</span>
+              <span class="code-font">Designed & Built</span>
             </p>
           </div>
           <div class="col-md-6 text-center text-md-end">

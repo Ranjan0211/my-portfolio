@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -11,9 +11,10 @@ import Swal from 'sweetalert2';
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact implements OnInit {
+export class Contact implements OnInit, AfterViewInit {
 
   @ViewChild('contactForm') contactForm!: NgForm;
+  @ViewChild('heroVideo') heroVideo!: ElementRef<HTMLVideoElement>;
 
   formData = {
     name: '',
@@ -42,7 +43,6 @@ export class Contact implements OnInit {
   mapUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
-    // FIX 1: Set a valid default map (World View)
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://maps.google.com/maps?q=20.5937,78.9629&t=k&z=3&ie=UTF8&iwloc=&output=embed'
     );
@@ -53,6 +53,29 @@ export class Contact implements OnInit {
     this.generatePuzzle();
   }
 
+  ngAfterViewInit() {
+    this.forcePlayVideo();
+  }
+
+  private forcePlayVideo(): void {
+    const video = this.heroVideo?.nativeElement;
+    if (!video) return;
+
+    video.muted = true;
+
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        setTimeout(() => {
+          video.play().catch(err => {
+            console.warn('Video autoplay blocked:', err);
+          });
+        }, 300);
+      });
+    }
+  }
+
   getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -60,7 +83,6 @@ export class Contact implements OnInit {
           this.userLat = position.coords.latitude;
           this.userLng = position.coords.longitude;
 
-          // FIX 2: Correct URL format for Satellite Map (t=k)
           const rawUrl = `https://maps.google.com/maps?q=${this.userLat},${this.userLng}&t=k&z=15&ie=UTF8&iwloc=&output=embed`;
 
           this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(rawUrl);
@@ -114,7 +136,6 @@ export class Contact implements OnInit {
       setTimeout(() => {
         this.isSubmitting = false;
 
-        // Success Alert
         Swal.fire({
           title: 'TRANSMISSION SUCCESSFUL!',
           text: 'Your message has been encrypted and sent to Ranjan.',
@@ -124,7 +145,6 @@ export class Contact implements OnInit {
           confirmButtonColor: '#22c55e',
         });
 
-        // Reset
         this.generatePuzzle();
         this.formData = { name: '', email: '', message: '' };
         if (this.contactForm) this.contactForm.resetForm();
