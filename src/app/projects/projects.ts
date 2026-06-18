@@ -51,7 +51,7 @@ import { CommonModule } from '@angular/common';
       description: 'Kanban-style task tracker with drag-and-drop functionality.',
       longDescription: 'A productivity tool inspired by Trello. Users can create boards, drag tasks between columns (To-Do, In Progress, Done), and assign due dates with local storage persistence.',
       features: ['Drag & Drop Interface', 'Dark/Light Mode Toggle', 'Local Storage Save', 'Sub-task Management'],
-      image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80',
+      image: '/image/taskmanager.jpg',
       featured: false,
       links: { demo: '#', github: '#' }
     },
@@ -73,7 +73,7 @@ import { CommonModule } from '@angular/common';
       description: 'An intelligent customer support bot capable of answering complex queries.',
       longDescription: 'Integrated with OpenAI, this chatbot understands context and provides human-like responses for customer support scenarios, significantly reducing support ticket volume.',
       features: ['Natural Language Processing', 'Context Awareness', 'Conversation History', 'Fallback to Human Agent'],
-      image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80',
+      image: '/image/chatbot.png',
       featured: true,
       links: { demo: '#', github: '#' }
     },
