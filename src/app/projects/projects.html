@@ -31,9 +31,12 @@
 
                         <div class="card-img-holder">
                             <img [src]="project.image" alt="{{ project.title }}" class="project-img"
-                                onerror="this.src='https://via.placeholder.com/400x200?text=Project'">
+                                (error)="handleImageError($event)">
+
                             <div class="img-overlay">
-                                <button (click)="openModal(project)" class="overlay-btn border-0">View Project</button>
+                                <button (click)="openModal(project)" class="overlay-btn border-0">
+                                    View Project
+                                </button>
                             </div>
                         </div>
 

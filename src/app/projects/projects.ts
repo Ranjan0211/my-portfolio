@@ -29,7 +29,7 @@ import { CommonModule } from '@angular/common';
       description: 'A full-featured shopping cart with payment integration and admin dashboard.',
       longDescription: 'This enterprise-level e-commerce solution features a robust product management system, secure Stripe payment integration, and a real-time order tracking dashboard for administrators. It handles high traffic loads efficiently using .NET Core.',
       features: ['User Authentication (JWT)', 'Stripe Payment Gateway', 'Admin Analytics Dashboard', 'Responsive Product Grid'],
-      image: '/image/E-COMMERCE.jpg',
+      image: 'image/E-COMMERCE.jpg',
       featured: true, 
       links: { demo: '#', github: '#' }
     },
@@ -40,7 +40,7 @@ import { CommonModule } from '@angular/common';
       description: 'Customer relationship tool with real-time analytics and reporting features.',
       longDescription: 'A comprehensive CRM designed to help businesses manage customer data. It includes automated email marketing, lead tracking pipelines, and Azure-hosted database solutions for scalability.',
       features: ['Role-based Access Control', 'Automated Email Sequences', 'Azure Blob Storage', 'PowerBI Reporting'],
-      image: '/image/CRM-System.jpg',
+      image: 'image/CRM-System.jpg',
       featured: false,
       links: { demo: '#', github: '#' }
     },
@@ -51,7 +51,7 @@ import { CommonModule } from '@angular/common';
       description: 'Kanban-style task tracker with drag-and-drop functionality.',
       longDescription: 'A productivity tool inspired by Trello. Users can create boards, drag tasks between columns (To-Do, In Progress, Done), and assign due dates with local storage persistence.',
       features: ['Drag & Drop Interface', 'Dark/Light Mode Toggle', 'Local Storage Save', 'Sub-task Management'],
-      image: '/image/taskmanager.jpg',
+      image: 'image/taskmanager.jpg',
       featured: false,
       links: { demo: '#', github: '#' }
     },
@@ -62,7 +62,7 @@ import { CommonModule } from '@angular/common';
       description: 'Personal finance tracker with expense categorization and charts.',
       longDescription: 'A cross-platform mobile application that helps users track expenses, set monthly budgets, and visualize spending habits through interactive charts and graphs.',
       features: ['Expense Categorization', 'Monthly Budget Alerts', 'Firebase Auth & Database', 'PDF Report Export'],
-      image: '/image/FINANCE-DASHBORD.jpeg',
+      image: 'image/FINANCE-DASHBORD.jpeg',
       featured: false,
       links: { demo: '#', github: '#' }
     },
@@ -73,7 +73,7 @@ import { CommonModule } from '@angular/common';
       description: 'An intelligent customer support bot capable of answering complex queries.',
       longDescription: 'Integrated with OpenAI, this chatbot understands context and provides human-like responses for customer support scenarios, significantly reducing support ticket volume.',
       features: ['Natural Language Processing', 'Context Awareness', 'Conversation History', 'Fallback to Human Agent'],
-      image: '/image/chatboat.png',
+      image: 'image/chatboat.png',
       featured: true,
       links: { demo: '#', github: '#' }
     },
@@ -89,6 +89,10 @@ import { CommonModule } from '@angular/common';
       links: { demo: '#', github: '#' }
     }
   ];
+
+  handleImageError(event: any) {
+  event.target.src = 'image/no-image.png';
+}
 
   // --- LIFECYCLE HOOKS ---
   ngOnInit() {
